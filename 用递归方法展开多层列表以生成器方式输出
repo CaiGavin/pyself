@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov  9 21:55:06 2017
+
+@author: junfeicai
+"""
+import pdb
+def flatten(ll):
+    """
+    功能:用递归方法展开多层列表,以生成器方式输出
+    """
+    pdb.set_trace()
+    print (ll)
+    if isinstance(ll, list):
+        for i in ll:
+            print(i)
+            for element in flatten(i):
+                print(element)
+                yield element
+    else:
+        yield ll
+        print(ll)
+
+
+testcase= ['and', 'B', ['not', 'A'],[1,2,1,[2,1],[1,1,[2,2,1]]], ['not', 'A', 'A'],['or', 'A', 'B' ,'A'] , 'B']
+
+print (list(flatten(testcase)))
+
+
+'''深度优先遍历嵌套容器'''
+def dft(tree):
+        try:
+                for c in tree:
+                        for e in dft(c):
+                                yield e
+        except TypeError:
+                pass
+        yield tree
